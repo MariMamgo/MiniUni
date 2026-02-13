@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import axios from 'axios'
+import axiosInstance from '../api/axiosConfig'
 import './LoginPage.css'
 
 function LoginPage({ setUser }) {
@@ -29,7 +29,7 @@ function LoginPage({ setUser }) {
 
     try {
       const endpoint = isSignUp ? '/api/auth/signup' : '/api/auth/login'
-      const response = await axios.post(endpoint, {
+      const response = await axiosInstance.post(endpoint, {
         email,
         password,
         role: isSignUp ? role : undefined

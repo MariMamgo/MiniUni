@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import axiosInstance from '../api/axiosConfig'
 import './AdminDashboard.css'
 
 function AdminDashboard() {
@@ -20,7 +20,7 @@ function AdminDashboard() {
 
   const fetchCourses = async () => {
     try {
-      const response = await axios.get('/api/courses')
+      const response = await axiosInstance.get('/api/courses')
       setCourses(response.data)
       setLoading(false)
     } catch (err) {
@@ -31,9 +31,7 @@ function AdminDashboard() {
 
   const fetchEnrollments = async () => {
     try {
-      const response = await axios.get('/api/enrollments', {
-        headers: { Authorization: `Bearer ${token}` }
-      })
+      const response = await axiosInstance.get('/api/enrollments')
       setEnrollments(response.data)
     } catch (err) {
       setError('Failed to load enrollments: ' + (err.response?.data?.error || err.message))
@@ -50,9 +48,7 @@ function AdminDashboard() {
     }
 
     try {
-      await axios.post('/api/courses', newCourse, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
+      await axiosInstance.post('/api/courses', newCourse)
       setSuccess('Course added successfully!')
       setNewCourse({ name: '', description: '', instructor: '' })
       setShowForm(false)
@@ -67,9 +63,7 @@ function AdminDashboard() {
     if (!window.confirm('Are you sure you want to delete this course?')) return
 
     try {
-      await axios.delete(`/api/courses/${courseId}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
+      await axiosInstance.delete(`/api/courses/${courseId}`)
       setSuccess('Course deleted successfully!')
       setTimeout(() => setSuccess(''), 3000)
       fetchCourses()

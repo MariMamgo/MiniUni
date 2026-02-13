@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import axiosInstance from '../api/axiosConfig'
 import './StudentDashboard.css'
 
 function StudentDashboard() {
@@ -16,7 +16,7 @@ function StudentDashboard() {
 
   const fetchCourses = async () => {
     try {
-      const response = await axios.get('/api/courses')
+      const response = await axiosInstance.get('/api/courses')
       setCourses(response.data)
       setError('')
     } catch (err) {
@@ -26,9 +26,7 @@ function StudentDashboard() {
 
   const fetchEnrolledCourses = async () => {
     try {
-      const response = await axios.get('/api/enrollments/my-courses', {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-      })
+      const response = await axiosInstance.get('/api/enrollments/my-courses')
       setEnrolledCourses(response.data.map(e => e.courseId))
       setLoading(false)
     } catch (err) {
@@ -39,10 +37,9 @@ function StudentDashboard() {
 
   const handleEnroll = async (courseId) => {
     try {
-      await axios.post(
+      await axiosInstance.post(
         '/api/enrollments',
-        { courseId },
-        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
+        { courseId }
       )
       setSuccess('Successfully enrolled!')
       setTimeout(() => setSuccess(''), 3000)
