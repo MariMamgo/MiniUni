@@ -1,0 +1,140 @@
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.add-btn {
+  background-color: #28a745;
+  padding: 10px 20px;
+}
+
+.add-btn:hover {
+  background-color: #218838;
+}
+
+.course-form {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  max-width: 600px;
+}
+
+.course-form h3 {
+  margin-bottom: 20px;
+}
+
+.course-form input,
+.course-form textarea {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.course-form button {
+  width: 100%;
+  background-color: #28a745;
+}
+
+.course-form button:hover {
+  background-color: #218838;
+}
+
+.admin-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+@media (max-width: 900px) {
+  .admin-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.section {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.section h3 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.courses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.course-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 6px;
+  border-left: 4px solid #007bff;
+}
+
+.course-item h4 {
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.course-item p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.course-item .enrollment-count {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  padding: 8px 15px;
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+.enrollments-table {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table thead {
+  background-color: #f0f0f0;
+}
+
+table th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #007bff;
+}
+
+table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+table tbody tr:hover {
+  background-color: #f9f9f9;
+}
