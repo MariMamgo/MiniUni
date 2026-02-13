@@ -34,7 +34,7 @@ function App() {
     <div>
       <nav className="navbar">
         <div className="container">
-          <h1>📚 Educational Platform</h1>
+          <h1>📚 MiniUni </h1>
           <button onClick={handleLogout}>Logout</button>
         </div>
       </nav>
