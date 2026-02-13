@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import LoginPage from './pages/LoginPage'
 import StudentDashboard from './pages/StudentDashboard'
 import AdminDashboard from './pages/AdminDashboard'
+import mortarboard from './mortarboard.png'
 import './App.css'
 
 function App() {
@@ -34,7 +35,10 @@ function App() {
     <div>
       <nav className="navbar">
         <div className="container">
-          <h1>📚 MiniUni </h1>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <img src={mortarboard} alt="MiniUni Logo" style={{ width: '40px', height: '40px' }} />
+            <h1>MiniUni</h1>
+          </div>
           <button onClick={handleLogout}>Logout</button>
         </div>
       </nav>
