@@ -5,7 +5,6 @@ import './LoginPage.css'
 function LoginPage({ setUser }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [role, setRole] = useState('student')
   const [isSignUp, setIsSignUp] = useState(false)
   const [error, setError] = useState('')
 
@@ -32,7 +31,7 @@ function LoginPage({ setUser }) {
       const response = await axiosInstance.post(endpoint, {
         email,
         password,
-        role: isSignUp ? role : undefined
+        role: isSignUp ? 'student' : undefined
       })
 
       localStorage.setItem('token', response.data.token)
@@ -70,13 +69,6 @@ function LoginPage({ setUser }) {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-
-        {isSignUp && (
-          <select value={role} onChange={(e) => setRole(e.target.value)}>
-            <option value="student">Student</option>
-            <option value="admin">Admin</option>
-          </select>
-        )}
 
         <button type="submit">{isSignUp ? 'Sign Up' : 'Login'}</button>
 

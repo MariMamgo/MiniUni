@@ -15,7 +15,12 @@ app = Flask(__name__)
 CORS(app)
 
 # Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv(
+database_url = os.getenv('DATABASE_URL')
+if database_url and database_url.startswith('postgres://'):
+    # Render uses postgres:// which is deprecated, convert to postgresql://
+    database_url = database_url.replace('postgres://', 'postgresql://', 1)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = database_url or os.getenv(
     'DATABASE_URL',
     'postgresql://user:password@localhost:5432/edu_platform'
 )
