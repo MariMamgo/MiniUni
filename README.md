@@ -166,7 +166,3 @@ After first run, you can create accounts through signup:
 - Create course schedules
 - Add notifications system
 
-## License
-
-MIT
-# MiniUni
